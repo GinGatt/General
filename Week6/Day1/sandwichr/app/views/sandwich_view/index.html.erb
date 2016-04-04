@@ -1,0 +1,9 @@
+<h1>Sandwich Index Page! </h1>
+<ul>
+	<% @sandwiches.each do|sndwch| %>
+		<li>
+			<a href="/sandwiches/<%=sndwch.id%>"><%= sndwch.name %></a>
+		</li>
+	<%end%>
+
+</ul>
