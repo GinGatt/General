@@ -1,3 +1,14 @@
+# Lambdas as a mechanism for Open/Closed - CodeWars 8(RUBY)
+spoken    =->(greeting) { "#{greeting.capitalize}." }
+shouted   =->(greeting) { "#{greeting.upcase}!"}
+whispered =->(greeting) { "#{greeting.downcase}." }
+greet =->(style, msg) { style.call(msg) }
+
+# test_cases
+greet.(spoken, "Hello")
+greet.(shouted, "Hello")
+greet.(whispered, "Hello")
+
 #Evil Autocorrect Prank - CodeWars 7(RUBY)
 # Every form of "you" "youuu" or "u" gets changed to "your sister"
 def autocorrect(string)
@@ -14,7 +25,7 @@ autocorrect("I miss you!")
 autocorrect("I miss u!!!")
 autocorrect("I love YOU")
 autocorrect("I love youuu?")
-autocorrect(" I love bayou")
+autocorrect("I love bayou")
 autocorrect("I love u")
 autocorrect("I love your hair; ur great")
 
