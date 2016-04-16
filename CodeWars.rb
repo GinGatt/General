@@ -1,4 +1,23 @@
-# Invalid Input Handling - Code Wars #1
+# Remove all in Union items - Code Wars #2 (RUBY)
+def array_diff(a, b)
+	# a.each do |element| 
+	# 	if b.include?(element)
+	# 		a.delete(element)
+	# 		b.delete(element)
+	# 	end
+	# end
+ #    a
+ p a-b
+end
+
+# test_cases
+array_diff([1,2], [1])
+array_diff([1,2,2], [1])
+array_diff([1,2,2], [2])
+array_diff([1,2,2], [])
+array_diff([], [1,2])
+
+# Invalid Input Handling - Code Wars #1 (RUBY)
 def get_count(*words)
 
 	if words[0].class == String
