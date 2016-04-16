@@ -11,9 +11,9 @@ def iq_test(numbers)
   	end
   end 
   if even_array.size > odd_array.size
-  	p numbers.index(odd_array[0]) + 1
+  	numbers.index(odd_array[0]) + 1
   else
-  	p numbers.index(even_array[0]) + 1
+  	numbers.index(even_array[0]) + 1
   end 
 end
 
