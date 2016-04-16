@@ -1,4 +1,25 @@
-#Largest 5 digit number in a series - CodeWars 6
+#Evil Autocorrect Prank - CodeWars 7(RUBY)
+# Every form of "you" "youuu" or "u" gets changed to "your sister"
+def autocorrect(string)
+	word_array = string.split
+	word_array.map! {|w| w.gsub(/^you+\b|^u\b/i, "your sister")}.join(" ")
+end 
+
+# OK so the spit into an array wasn't necessary since \b was able to tell us the border of a word.. 
+# def autocorrect(input)
+#   input.gsub(/\b(you+|u)\b/i, 'your sister')
+# end
+
+autocorrect("I miss you!")
+autocorrect("I miss u!!!")
+autocorrect("I love YOU")
+autocorrect("I love youuu?")
+autocorrect(" I love bayou")
+autocorrect("I love u")
+autocorrect("I love your hair; ur great")
+
+
+#Largest 5 digit number in a series - CodeWars 6 (RUBY)
 # passed in as a string of only digits; return a five digit integer; passed may be as large as 1000 digits.
 def solution(digits)
 	largest = (digits[0]+digits[1]+digits[2]+digits[3]+digits[4]).to_i
