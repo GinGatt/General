@@ -1,3 +1,18 @@
+# Finding the next Perfect Square - Code Wars #4 (RUBY)
+# Assume Parameter POSITIVE
+def find_next_square(sq)
+  # Return the next square if sq is a perfect square, -1 otherwise
+  	num = Math.sqrt(sq)
+	if num == num.floor
+		(sq+num*2+1).to_i
+	else
+		-1 
+	end 
+end
+
+# test_cases
+find_next_square(121)
+
 # Counting in the Amazon - Code Wars #3 (RUBY)
 # Take a given number and return the Arara's equivalent. WITH NO TRAILING SPACES!!
 # 1 = anane 
