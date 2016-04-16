@@ -1,14 +1,44 @@
+# Counting in the Amazon - Code Wars #3 (RUBY)
+# Take a given number and return the Arara's equivalent. WITH NO TRAILING SPACES!!
+# 1 = anane 
+# 2 = adak 
+# 3 = adak anane 
+# 4 = adak adak 
+# 5 = adak adak anane 
+# 6 = adak adak adak
+# 7 = adak adak adak anane
+# 8 = adak adak adak adak 
+
+def count_arara(num)
+	num_adak = (num/2).floor
+	num_anane = num%2
+	phrase = "adak "*num_adak + "anane"*num_anane
+	phrase = phrase.sub(/[" "]\Z/, "")
+	phrase
+end
+
+# Oh you beutiful people!! 
+# (['adak'] * (n / 2) + ['anane'] * (n % 2)).join(' ')
+
+# test_cases
+count_arara(3) 
+count_arara(8)
+
 # Remove all in Union items - Code Wars #2 (RUBY)
 def array_diff(a, b)
-	# a.each do |element| 
-	# 	if b.include?(element)
-	# 		a.delete(element)
-	# 		b.delete(element)
-	# 	end
-	# end
- #    a
- p a-b
+	a.each do |element| 
+		if b.include?(element)
+			a.delete(element)
+			b.delete(element)
+		end
+	end
+    a
 end
+
+# I coulld have saved so much code!! 
+# def array_diff(a, b)
+# 	a-b
+# end
 
 # test_cases
 array_diff([1,2], [1])
