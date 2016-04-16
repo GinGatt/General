@@ -1,3 +1,26 @@
+#Largest 5 digit number in a series - CodeWars 6
+# passed in as a string of only digits; return a five digit integer; passed may be as large as 1000 digits.
+def solution(digits)
+	largest = (digits[0]+digits[1]+digits[2]+digits[3]+digits[4]).to_i
+	i = 4
+	while i < digits.length
+		tester = (digits[i-4]+digits[i-3]+digits[i-2]+digits[i-1]+digits[i]).to_i
+		if tester > largest
+			largest = tester
+		end 
+		i += 1
+	end 
+	largest
+end
+
+# someother person's beautiful answer.. One day.. 
+# def solution(digits)
+#   digits.split('').each_cons(5).max.join.to_i
+# end
+
+# test_cases
+solution("283910")
+
 # IQ Test - Finding num's layman's position that differs in even-ness - Code Wars #5 (RUBY)
 def iq_test(numbers)
   numbers = numbers.split(" ")
