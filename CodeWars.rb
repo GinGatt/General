@@ -1,3 +1,27 @@
+# IQ Test - Finding num's layman's position that differs in even-ness - Code Wars #5 (RUBY)
+def iq_test(numbers)
+  numbers = numbers.split(" ")
+  even_array = []
+  odd_array = []
+  numbers.each do |num|
+  	if num.to_i.even?
+  		even_array.push(num)
+  	else
+  		odd_array.push(num)
+  	end
+  end 
+  if even_array.size > odd_array.size
+  	p numbers.index(odd_array[0]) + 1
+  else
+  	p numbers.index(even_array[0]) + 1
+  end 
+end
+
+# test_cases
+iq_test("2 4 7 8 10")
+iq_test("1 2 2")
+
+
 # Finding the next Perfect Square - Code Wars #4 (RUBY)
 # Assume Parameter POSITIVE
 def find_next_square(sq)
