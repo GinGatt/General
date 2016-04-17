@@ -1,3 +1,105 @@
+# Did I finish my Sudoku? - CodeWars 9(RUBY)
+def done_or_not(board)
+	if chk_horizontal(board) == true && chk_vertical(board) == true && chk_region(board) == true
+		'Finished!'
+	else 
+		'Try again!'
+	end 
+end 
+
+def chk_horizontal(board)
+	k = 8
+	while k > 0
+		j = 8
+		while j > 0
+			if board[k].include? (j+1)
+				j -= 1
+			else
+				return false
+			end 
+		end 
+		k -=1
+	end
+	true
+end 
+
+def chk_vertical(board)
+	# get arrays of vertical 
+	vertical_arrays = []
+	count = 0
+	while count < 9
+		vertical_array = []
+		board.each do |array|
+			vertical_array.push(array[count])
+		end
+		vertical_arrays.push(vertical_array)
+		count += 1
+	end
+	
+	# check arrays for appropriate #
+	chk_horizontal(vertical_arrays)
+end 
+
+def chk_region(board)
+	# get array of regions
+	region_arrays = []
+	col = 0
+	count = 0
+	while col < 7 && count < 3
+		row = count * 3
+		region_array = []
+		# I only want the condition evaluated after the code runs..  
+		begin
+			region_array.concat(board[row][col..col+2])
+			row +=1
+		end while row%3 > 0
+		region_arrays.push(region_array)
+		col +=3
+		# if finishes first row of three go to next rows of 3, 2 more times
+		if col == 9
+			count +=1
+			col = 0
+		end 
+	end 
+	chk_horizontal(region_arrays)
+end 
+
+# test_cases
+done_or_not([[5, 3, 4, 6, 7, 8, 9, 1, 2], 
+                         [6, 7, 2, 1, 9, 5, 3, 4, 8],
+                         [1, 9, 8, 3, 4, 2, 5, 6, 7],
+                         [8, 5, 9, 7, 6, 1, 4, 2, 3],
+                         [4, 2, 6, 8, 5, 3, 7, 9, 1],
+                         [7, 1, 3, 9, 2, 4, 8, 5, 6],
+                         [9, 6, 1, 5, 3, 7, 2, 8, 4],
+                         [2, 8, 7, 4, 1, 9, 6, 3, 5],
+                         [3, 4, 5, 2, 8, 6, 1, 7, 9]])
+done_or_not([[5, 3, 4, 6, 7, 8, 9, 1, 2], 
+                         [6, 7, 2, 1, 9, 0, 3, 4, 9],
+                         [1, 0, 0, 3, 4, 2, 5, 6, 0],
+                         [8, 5, 9, 7, 6, 1, 0, 2, 0],
+                         [4, 2, 6, 8, 5, 3, 7, 9, 1],
+                         [7, 1, 3, 9, 2, 4, 8, 5, 6],
+                         [9, 0, 1, 5, 3, 7, 2, 1, 4],
+                         [2, 8, 7, 4, 1, 9, 6, 3, 5],
+                         [3, 0, 0, 4, 8, 1, 1, 7, 9]])
+
+# life could have been easier with .transpose or requiring matrix
+# def done_or_not(board)
+#   temp = board.transpose
+#   x_mod, y_mod = 0
+#   (0..8).each do |reg|
+#     array = []
+#     x_mod = (reg * 3 ) % 9
+#     y_mod = ( reg / 3) * 3
+#     (0..2).each { |x| (0..2).each { |y| array.push board[x + x_mod][y + y_mod] }}
+#     if board[reg] != board[reg].uniq || temp[reg] != temp[reg].uniq || array != array.uniq
+#       return 'Try again!'
+#     end
+#   end
+#   return 'Finished!'
+# end
+
 # Lambdas as a mechanism for Open/Closed - CodeWars 8(RUBY)
 spoken    =->(greeting) { "#{greeting.capitalize}." }
 shouted   =->(greeting) { "#{greeting.upcase}!"}
