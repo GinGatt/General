@@ -1,3 +1,26 @@
+# Valid Parentheses - CodeWars 10(RUBY)
+# determines if order of parantheses is valid.. 
+def validParentheses(string)
+	# are there any characters that aren't parantheses?
+	# count num of open paren, adjusting for closures, if dips negative, unmatched
+	string = string.gsub(/[^\)|^\(]/, "")
+	count = 0
+	string.each_char do |char|
+		char == "(" ? (count +=1) : (count -=1)
+		return false if count < 0
+	end 
+	# at end iteration, must have equal num of open and closed
+	count == 0 ? (true) : (false)
+end 
+
+# test_cases
+validParentheses("())(()")
+validParentheses( " (hi)bye" )
+validParentheses(")(")
+validParentheses( ")(()))" )
+validParentheses( "(" )
+validParentheses( "(())((()())())" )
+
 # Did I finish my Sudoku? - CodeWars 9(RUBY)
 def done_or_not(board)
 	if chk_horizontal(board) == true && chk_vertical(board) == true && chk_region(board) == true
