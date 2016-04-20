@@ -1,3 +1,23 @@
+// DubStep - CodeWars #2 (JavaScript)
+// what were the original lyrics before dubs ?before first word, ?between, ?after last word
+function songDecoder(song){
+	var wordArray;
+	// fix the WUB at beg and end since those don't get spaces; Fix middle with spaces
+	wordArray = song.replace(/^(WUB)+|(WUB)+$/g, "");
+	wordArray = wordArray.replace(/(WUB)+/g, " ");
+	return wordArray;
+}
+
+// test_cases
+console.log(songDecoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB"));
+console.log(songDecoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB"));
+
+//GREAT there's a trim function that would have eliminated the need for first replace
+// function songDecoder(song){
+//   return song.replace(/(WUB)+/g," ").trim()
+// }
+
+
 // Binary Addition - CodeWars #1
 // Implement a function that successfully adds two numbers together and returns their solution in binary. 
 
