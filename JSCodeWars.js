@@ -1,3 +1,18 @@
+// Exes and Ohs - CodeWars #3 (JavaScript)
+// Does string contain same number of x's and o's?
+function XO(str) {
+	var x = str.match(/x/gi)||[];
+	var o = str.match(/o/gi)||[];
+	return x.length == o.length;
+}
+
+// test_cases
+XO('Xoxommm');
+XO('Xxoxo');
+XO('oo');
+XO("ooom");
+
+
 // DubStep - CodeWars #2 (JavaScript)
 // what were the original lyrics before dubs ?before first word, ?between, ?after last word
 function songDecoder(song){
@@ -9,8 +24,8 @@ function songDecoder(song){
 }
 
 // test_cases
-console.log(songDecoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB"));
-console.log(songDecoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB"));
+songDecoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB");
+songDecoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB");
 
 //GREAT there's a trim function that would have eliminated the need for first replace
 // function songDecoder(song){
