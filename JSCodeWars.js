@@ -1,3 +1,23 @@
+// Validate Credit Card Number - CodeWars #4 (JavaScript)
+// Implement the Luhn Algorithm for positive int >= 16 digits
+function validate(n){
+	// even->double every other starting with first; odd -> double every other starting with second
+	// if resulting number is > 9, replace it with the sum of it's own digits
+	//sum the final digits
+	//divide by 10, if remainder = 0, valid
+	var arr = String(n).split("");
+	var count = arr.length;
+	while( count > 0){
+		arr[count-2] = (2 * arr[count-2]);
+		if (arr[count-2] > 9){arr[count-2] = arr[count-2]-9};
+		count -= 2;
+	}
+	var sum = arr.reduce((prev, curr) => parseInt(prev) + parseInt(curr));
+	return sum%10 == 0 ? true : false;
+}
+// test_cases
+console.log(validate(1239));
+ console.log(validate(12397));
 // Exes and Ohs - CodeWars #3 (JavaScript)
 // Does string contain same number of x's and o's?
 function XO(str) {
@@ -11,6 +31,7 @@ XO('Xoxommm');
 XO('Xxoxo');
 XO('oo');
 XO("ooom");
+// pretty proud of my ||[] assignment size you can't find the length of undefined/null
 
 
 // DubStep - CodeWars #2 (JavaScript)
