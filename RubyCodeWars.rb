@@ -1,3 +1,28 @@
+#Title Case - CodeWars 11(RUBY)
+def title_case(title, minor_words='')
+	title_array = title.downcase.split(' ')
+	minor_words_array = minor_words.downcase.split(' ')
+	title_array.map!{|e|
+		if minor_words_array.include?(e) == false || title_array[0] == e
+			e.capitalize
+		else 
+			e
+		end 
+	} 
+	title_array.join(' ')
+end
+
+# Read it and weep.. 
+# def title_case(title, minor_words = '')
+#   title.capitalize.split().map{|a| minor_words.downcase.split().include?(a) ? a : a.capitalize}.join(' ')
+# end
+
+# test_cases
+p title_case('')
+p title_case('a clash of KINGS', 'a an the of')
+p title_case('THE WIND IN THE WILLOWS', 'The In')
+p title_case('the quick brown fox')
+
 # Valid Parentheses - CodeWars 10(RUBY)
 # determines if order of parantheses is valid.. 
 def validParentheses(string)
