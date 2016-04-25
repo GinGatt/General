@@ -1,3 +1,46 @@
+// Title Case - CodeWars #5 (JavaScript)
+// argument one = string to put in title case; Argument 2 = exceptions that will always be lowercase
+function titleCase(title, minorWords){
+	if(title){
+		var titleArray = title.toLowerCase().split(" ");
+	}
+	else{
+		return title;
+	}
+	titleArray.forEach(function(element, index, array){
+		if(minorWords){
+			var minorWordsArray = minorWords.toLowerCase().split(' ');
+			if(minorWordsArray.indexOf(element) == -1 || array[0] == element){
+			array[index] = element.replace(element[0], element[0].toUpperCase());
+			}
+		}
+		else{
+			array[index] = element.replace(element[0], element[0].toUpperCase());
+		}
+	}); 
+	return titleArray.join(' ');
+}
+// Great use of type of to avoid my embedded if statements...
+// function titleCase(title, minorWords) {
+//   var minorWords = typeof minorWords !== "undefined" ? minorWords.toLowerCase().split(' ') : [];
+//   return title.toLowerCase().split(' ').map(function(v, i) {
+//     if(v != "" && ( (minorWords.indexOf(v) === -1) || i == 0)) {
+//       v = v.split('');
+//       v[0] = v[0].toUpperCase();
+//       v = v.join('');
+//     }
+//     return v;
+//   }).join(' ');
+// }
+
+// test_cases
+titleCase('','');
+titleCase('a clash of KINGS', 'a an the of');
+titleCase('big foo bear','foo');
+titleCase('THE WIND IN THE WILLOWS', 'The In');
+titleCase('the quick brown fox');
+
+
 // Validate Credit Card Number - CodeWars #4 (JavaScript)
 // Implement the Luhn Algorithm for positive int >= 16 digits
 function validate(n){
@@ -16,8 +59,8 @@ function validate(n){
 	return sum%10 == 0 ? true : false;
 }
 // test_cases
-console.log(validate(1239));
- console.log(validate(12397));
+validate(1239);
+validate(12397);
 // Exes and Ohs - CodeWars #3 (JavaScript)
 // Does string contain same number of x's and o's?
 function XO(str) {
