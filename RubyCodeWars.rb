@@ -1,3 +1,64 @@
+# NumberTheory -Explosive Sum - CodeWars 12(RUBY)
+#partition theory - shows number of different ways you can add to get n
+#eg 4 = 4; 3+1; 2+2; 2+1+1; 1+1+1+1
+
+def exp_sum(n, hash = {0=>1, 1=>1})
+	if n > 1
+		calc_array = []
+		pent_arr = calc_pent(n)
+		len = pent_arr.length
+		count = 0
+		while count < len
+			pent_at_bat = pent_arr.pop
+			num_to_part = n - pent_at_bat
+			if hash.has_key? (num_to_part)
+				calc_array.unshift(hash[num_to_part])
+			elsif  num_to_part > -1
+				new_val = exp_sum(num_to_part, hash)
+				hash[num_to_part] = new_val
+				calc_array.unshift(new_val)
+			end 
+			count += 1
+		end
+		sum_array(calc_array)
+	elsif n < 0
+		return 0
+	else 
+		return 1
+	end
+end 
+def calc_pent(n)
+	num = 1
+	pent_arr = []
+	begin 
+		num%2 == 0 ? (p = -num/2) : (p = (num+1)/2)
+		pent = (3*p**2 - p)/2
+		pent_arr.push(pent)
+		num += 1
+	end while pent < n
+	pent_arr
+end 
+def sum_array(calc_array)
+	sum = 0
+	calc_array.each_with_index do |num, index|
+		if (index+1)%4 == 1 || (index+1)%4 == 2
+			sum += num
+		else
+			sum -= num
+		end 
+	end 
+	sum
+end		
+# test_cases
+exp_sum(-1)
+exp_sum(0)
+exp_sum(1)
+exp_sum(2)
+exp_sum(6)
+exp_sum(10)
+exp_sum(50)
+
+
 #Title Case - CodeWars 11(RUBY)
 def title_case(title, minor_words='')
 	title_array = title.downcase.split(' ')
@@ -18,10 +79,10 @@ end
 # end
 
 # test_cases
-p title_case('')
-p title_case('a clash of KINGS', 'a an the of')
-p title_case('THE WIND IN THE WILLOWS', 'The In')
-p title_case('the quick brown fox')
+title_case('')
+title_case('a clash of KINGS', 'a an the of')
+title_case('THE WIND IN THE WILLOWS', 'The In')
+title_case('the quick brown fox')
 
 # Valid Parentheses - CodeWars 10(RUBY)
 # determines if order of parantheses is valid.. 
@@ -166,7 +227,7 @@ def autocorrect(string)
 	word_array.map! {|w| w.gsub(/^you+\b|^u\b/i, "your sister")}.join(" ")
 end 
 
-# OK so the spit into an array wasn't necessary since \b was able to tell us the border of a word.. 
+# OK so the split into an array wasn't necessary since \b was able to tell us the border of a word.. 
 # def autocorrect(input)
 #   input.gsub(/\b(you+|u)\b/i, 'your sister')
 # end
@@ -195,7 +256,7 @@ def solution(digits)
 	largest
 end
 
-# someother person's beautiful answer.. One day.. 
+# some other person's beautiful answer.. One day.. 
 # def solution(digits)
 #   digits.split('').each_cons(5).max.join.to_i
 # end
