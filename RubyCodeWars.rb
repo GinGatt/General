@@ -49,6 +49,23 @@ def sum_array(calc_array)
 	end 
 	sum
 end		
+
+# More succinct.. 
+# def exp_sum(n)
+#   @cache ||= {}
+#   @cache.has_key?(n) ? @cache[n] : calculate_element(n)
+# end
+
+# def calculate_element(n)
+#   return 0 if n < 0
+#   return 1 if n.between?(0, 1)
+#   sum = 0
+#   (1..n).each do |k|
+#     sum += ((-1)**(k+1)) * (exp_sum(n - (k * (3*k-1))/2) + exp_sum(n - (k * (3*k+1))/2))
+#   end
+#   @cache[n] = sum
+# end
+
 # test_cases
 exp_sum(-1)
 exp_sum(0)
